@@ -1,0 +1,6 @@
+{
+    "dockerFile": ".devcontainer/Dockerfile",
+    "extensions": [
+        "rust-lang.rust-analyzer",
+    ]
+}
