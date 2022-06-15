@@ -2,5 +2,7 @@
     "dockerFile": ".devcontainer/Dockerfile",
     "extensions": [
         "rust-lang.rust-analyzer",
+        "ms-dotnettools.csharp",
+        "eridem.vscode-nupkg",
     ]
 }

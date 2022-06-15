@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RuntimeIdentifiers>win-x64;linux-arm64;linux-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Linux -->
+    <Content Include="..\rust-library\target\x86_64-unknown-linux-gnu\release\librust_library.so"
+          Condition="Exists('..\rust-library\target\x86_64-unknown-linux-gnu\release\librust_library.so')">
+      <Pack>true</Pack>
+      <PackagePath>runtimes\linux-x64\native\librust_library.so</PackagePath>
+    </Content>
+    <Content Include="..\rust-library\target\aarch64-unknown-linux-gnu\release\librust_library.so"
+          Condition="Exists('..\rust-library\target\aarch64-unknown-linux-gnu\release\librust_library.so')">
+      <Pack>true</Pack>
+      <PackagePath>runtimes\linux-arm64\native\librust_library.so</PackagePath>
+    </Content>
+    <!-- Windows -->
+    <Content Include="..\rust-library\target\x86_64-pc-windows-gnu\release\rust_library.dll"
+          Condition="Exists('..\rust-library\target\x86_64-pc-windows-gnu\release\rust_library.dll')">
+      <Pack>true</Pack>
+      <PackagePath>runtimes\win-x64\native\rust_library.dll</PackagePath>
+    </Content>
+  </ItemGroup>
+
+</Project>
