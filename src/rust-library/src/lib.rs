@@ -16,26 +16,29 @@ pub extern "C" fn create_handler() -> *mut Handler {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn set_handler_name(handler: *mut Handler, string: *const c_char) -> () {
-    let name = CStr::from_ptr(string);
-    (*handler).name = name.to_str().unwrap().to_owned()
+pub unsafe extern "C" fn set_handler_name(handle: *mut Handler, value: *const c_char) -> () {
+    let mut handler = &mut *handle;
+    let name = CStr::from_ptr(value);
+    handler.name = name.to_str().unwrap().to_owned();
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn get_handler_name(handler: *const Handler) -> *const c_char {
-    let s = CString::new(&*(*handler).name).unwrap();
+pub unsafe extern "C" fn get_handler_name(handle: *const Handler) -> *const c_char {
+    let handler = &*handle;
+    let s = CString::new(handler.name.as_bytes()).unwrap();
     let p = s.as_ptr();
     std::mem::forget(s);
     p
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn invoke_handler(handler: *mut Handler) -> u32 {
-    (*handler).call_count += 1;
-    (*handler).call_count
+pub unsafe extern "C" fn invoke_handler(handle: *mut Handler) -> u32 {
+    let mut handler = &mut *handle;
+    handler.call_count += 1;
+    handler.call_count
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn destroy_handler(handler: *mut Handler) -> () {
-    let _ = Box::from_raw(handler);
+pub unsafe extern "C" fn destroy_handler(handle: *mut Handler) -> () {
+    let _ = Box::from_raw(handle);
 }
