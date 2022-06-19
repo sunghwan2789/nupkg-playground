@@ -13,7 +13,7 @@ internal class RustLibraryHandle : SafeHandle
 
     protected override bool ReleaseHandle()
     {
-        RustLibraryWrapper.destroy_handler(this);
+        RustLibraryWrapper.handler_destroy(this);
         return true;
     }
 }

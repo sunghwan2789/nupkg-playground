@@ -6,18 +6,18 @@ public class Handler : IDisposable
 
     public Handler()
     {
-        _handle = RustLibraryWrapper.create_handler();
+        _handle = RustLibraryWrapper.handler_create();
     }
 
     public string Name
     {
-        get => RustLibraryWrapper.get_handler_name(_handle);
-        set => RustLibraryWrapper.set_handler_name(_handle, value);
+        get => RustLibraryWrapper.handler_get_name(_handle);
+        set => RustLibraryWrapper.handler_set_name(_handle, value);
     }
 
     public int Invoke()
     {
-        return RustLibraryWrapper.invoke_handler(_handle);
+        return RustLibraryWrapper.handler_invoke(_handle);
     }
 
     public void Dispose()

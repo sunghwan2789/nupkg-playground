@@ -7,18 +7,18 @@ internal static class RustLibraryWrapper
     private const string dllName = "rust_library";
 
     [DllImport(dllName)]
-    public static extern RustLibraryHandle create_handler();
+    public static extern RustLibraryHandle handler_create();
 
     [DllImport(dllName)]
-    public static extern void set_handler_name(RustLibraryHandle handle, [MarshalAs(UnmanagedType.LPStr)] string name);
+    public static extern void handler_set_name(RustLibraryHandle handle, [MarshalAs(UnmanagedType.LPStr)] string name);
 
     [DllImport(dllName)]
     [return: MarshalAs(UnmanagedType.LPStr)]
-    public static extern string get_handler_name(RustLibraryHandle handle);
+    public static extern string handler_get_name(RustLibraryHandle handle);
 
     [DllImport(dllName)]
-    public static extern int invoke_handler(RustLibraryHandle handle);
+    public static extern int handler_invoke(RustLibraryHandle handle);
 
     [DllImport(dllName)]
-    public static extern void destroy_handler(RustLibraryHandle handle);
+    public static extern void handler_destroy(RustLibraryHandle handle);
 }
