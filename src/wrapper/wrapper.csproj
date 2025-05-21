@@ -11,14 +11,14 @@
 
   <ItemGroup>
     <!-- Linux -->
-    <Content Include="..\rust-library\target\x86_64-unknown-linux-gnu\release\librust_library.so">
+    <!-- <Content Include="..\rust-library\target\x86_64-unknown-linux-gnu\release\librust_library.so">
       <Pack>true</Pack>
       <PackagePath>runtimes\linux-x64\native</PackagePath>
     </Content>
     <Content Include="..\rust-library\target\aarch64-unknown-linux-gnu\release\librust_library.so">
       <Pack>true</Pack>
       <PackagePath>runtimes\linux-arm64\native</PackagePath>
-    </Content>
+    </Content> -->
     <!-- Windows -->
     <Content Include="..\rust-library\target\x86_64-pc-windows-gnu\release\rust_library.dll">
       <Pack>true</Pack>
